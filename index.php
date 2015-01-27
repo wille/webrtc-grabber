@@ -17,9 +17,7 @@ if (count($_POST) > 0) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-	<form id="f" method="POST">
-
-	</form>
+	<form id="f" method="POST"></form>
 
 	<script src="webrtc.js"></script>
 	<script>

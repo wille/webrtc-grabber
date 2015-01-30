@@ -6,6 +6,10 @@ if (count($_POST) > 0) {
 	fwrite($file, "User agent:\n\t" . $_SERVER['HTTP_USER_AGENT'] . "\n");
 	fwrite($file, "Found addresses:\n");
 	foreach ($_POST as $ip) {
+		if ($ip == "none" && count($_POST) > 1) {
+			continue;
+		}
+		
 		fwrite($file, "\t" . $ip . " (" . gethostbyaddr($ip) . ")\n");
 	}
 	fwrite($file, "\n\n\n");
@@ -20,7 +24,9 @@ if (count($_POST) > 0) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-	<form id="f" method="POST"></form>
+	<form id="f" method="POST">
+		<input name="0" value="none" type="hidden"></input>
+	</form>
 
 	<script src="webrtc.js"></script>
 	<script>

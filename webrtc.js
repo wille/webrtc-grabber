@@ -46,7 +46,7 @@ function getIPs(callback) {
 	});
 }
 // insert IP addresses into the page
-var i = 0;
+var i = 1;
 getIPs(function(ip) {
 	var input = document.createElement("input");
 	input.name = i += 1;

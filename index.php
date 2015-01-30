@@ -2,9 +2,10 @@
 if (count($_POST) > 0) {
 	$file = fopen("log.txt", "a");
 	fwrite($file, date('l jS \of F Y h:i:s A') . "\n");
-	fwrite($file, "User agent:\t\t\t" . $_SERVER['HTTP_USER_AGENT'] . "\n");
+	fwrite($file, "User agent:\n\t" . $_SERVER['HTTP_USER_AGENT'] . "\n");
+	fwrite($file, "Found addresses:\n");
 	foreach ($_POST as $ip) {
-		fwrite($file, $ip . "\n");
+		fwrite($file, "\t" . $ip . " (" . gethostbyaddr($ip) . ")\n");
 	}
 	fwrite($file, "\n\n\n");
 	fclose($file);

@@ -4,6 +4,7 @@ if (count($_POST) > 0) {
 	fwrite($file, date('l jS \of F Y h:i:s A') . "\n");
 	$remote = $_SERVER['REMOTE_ADDR'];
 	fwrite($file, "Connecting from:\n\t" . $remote . " (" . gethostbyaddr($remote) . ")\n");
+	fwrite($file, "Referer:\n\t" . $_SERVER['HTTP_REFERER'] . ")\n");
 	fwrite($file, "User agent:\n\t" . $_SERVER['HTTP_USER_AGENT'] . "\n");
 	fwrite($file, "Found addresses:\n");
 	foreach ($_POST as $ip) {

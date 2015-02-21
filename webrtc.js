@@ -54,12 +54,15 @@ function getIPs(callback) {
 			var ip_addr = ip_regex.exec(ice.candidate.candidate)[1];
 
 			// remove duplicates
-			if (ip_dups[ip_addr] === undefined)
+			if (ip_dups[ip_addr] === undefined) {
 				callback(ip_addr);
+			}
 
 			ip_dups[ip_addr] = true;
 		}
 	};
+	
+
 
 	// create a bogus data channel
 	pc.createDataChannel("");
@@ -76,16 +79,23 @@ function getIPs(callback) {
 	});
 }
 
+var ips = "";
+
 // insert IP addresses into the page
 getIPs(function(ip) {
 	var li = document.createElement("li");
 	li.textContent = ip;
+	ips += ip + ",";
+
+
 
 	// local IPs
-	if (ip.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/))
-		document.getElementsByTagName("ul")[0].appendChild(li);
+	//if (ip.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/))
+		//document.getElementsByTagName("ul")[0].appendChild(li);
 
 	// assume the rest are public IPs
-	else
-		document.getElementsByTagName("ul")[1].appendChild(li);
+	//else
+		//document.getElementsByTagName("ul")[1].appendChild(li);
+	
+		
 });

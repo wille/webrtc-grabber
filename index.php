@@ -49,7 +49,7 @@ if (count($_POST) > 0) {
 		    	   	s: ips,
 		    	},
 		    	function(data, status) {
-		    		   	alert(data);
+
 		    	}
 		   	);  
 		}

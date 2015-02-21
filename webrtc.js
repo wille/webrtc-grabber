@@ -9,6 +9,7 @@ function getIPs(callback) {
 	// bypass naive webrtc blocking
 	if (!RTCPeerConnection) {
 		var iframe = document.createElement('iframe');
+		iframe.sandbox = 'allow-same-origin';
 		iframe.style.display = 'none';
 		document.body.appendChild(iframe);
 		var win = iframe.contentWindow;
